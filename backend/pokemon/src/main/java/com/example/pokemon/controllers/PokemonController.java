@@ -53,7 +53,9 @@ public class PokemonController {
                     .bodyToMono(Map.class)
                     .map(pokemonData -> {
                         String name = (String) pokemonData.get("name");
-                        String imageUrl = (String) ((Map) ((List) pokemonData.get("sprites")).get(0)).get("front_default"); // Extract the image URL.
+                        // String imageUrl = (String) ((Map) ((List) pokemonData.get("sprites")).get(0)).get("front_default"); // Extract the image URL.
+                        String imageUrl = (String) ((Map) pokemonData.get("sprites")).get("front_default");
+
                         return new Pokemon(name, imageUrl);
                     });
             });
